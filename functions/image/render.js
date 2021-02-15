@@ -1,5 +1,5 @@
 const canvasSketch = require('canvas-sketch');
-const { createCanvas } = require('canvas-aws-prebuilt');
+const { createCanvas } = require('canvas');
 
 const canvas = createCanvas();
 
