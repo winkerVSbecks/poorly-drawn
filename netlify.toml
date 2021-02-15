@@ -1,4 +1,3 @@
 [build]
   functions = "functions"
   command = "make install"
-  publish = "image-component/storybook-static"
