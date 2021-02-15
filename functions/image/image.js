@@ -4,7 +4,7 @@ const render = require('./render');
 exports.handler = async function (event, ctx, callback) {
   const { queryStringParameters } = event;
 
-  render(pizza)
+  return render(pizza)
     .then((imageBuffer) => {
       return {
         isBase64Encoded: true,
