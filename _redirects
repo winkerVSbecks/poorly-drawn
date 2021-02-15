@@ -1,1 +1,1 @@
-/image  /.netlify/functions/process-url 200
+/pizza/*  /.netlify/functions/image?type=pizza&size=:splat 200

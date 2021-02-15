@@ -1,10 +1,20 @@
 const pizza = require('./sketches/pizza');
 const render = require('./render');
 
+const sketches = { pizza };
+
 exports.handler = async function (event, ctx, callback) {
   const { queryStringParameters } = event;
+  const { type, size } = queryStringParameters;
+  const sketchConfig = sketches[type] || pizza;
 
-  return render(pizza)
+  const dimensions = size
+    ? size.split('x').map((s) => parseInt(s, 10))
+    : [1600, 1200];
+
+  const settings = { ...sketchConfig.settings, dimensions };
+
+  return render({ sketch: sketchConfig.sketch, settings })
     .then((imageBuffer) => {
       return {
         isBase64Encoded: true,
@@ -20,7 +30,6 @@ exports.handler = async function (event, ctx, callback) {
       console.log('error', error);
       return callback(null, {
         statusCode: 400,
-        headers,
         body: JSON.stringify(error),
       });
     });
