@@ -23,7 +23,7 @@ const sketch = () => {
     context.fillRect(0, 0, width, height);
 
     context.strokeStyle = clrs.outline;
-    context.lineWidth = 8;
+    context.lineWidth = Math.max(2, height * 0.0125);
     context.lineJoin = 'round';
     context.lineCap = 'round';
     makePizza(context, [width / 2, height / 2], [width / 6, height / 6]);

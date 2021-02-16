@@ -12,8 +12,6 @@ exports.handler = async function (event, context) {
     ? size.split('x').map((s) => parseInt(s, 10))
     : [1280, 640];
 
-  console.log(size, dimensions);
-
   const settings = { ...sketchConfig.settings, dimensions };
 
   return render({ sketch: sketchConfig.sketch, settings })
