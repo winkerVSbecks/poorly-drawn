@@ -2,7 +2,7 @@ const Random = require('canvas-sketch-util/random');
 const { lerpArray } = require('canvas-sketch-util/math');
 
 const settings = {
-  dimensions: [1600, 1200],
+  dimensions: [1280, 640],
 };
 
 const clrs = {
@@ -46,12 +46,23 @@ function makePizza(context, [cx, cy], [a, b]) {
 
   const droopSide = base[1][1] < base[2][1] ? 2 : 1;
 
-  // Draw base
+  // Draw cheese
   context.fillStyle = clrs.cheese;
   context.beginPath();
   context.moveTo(...base[0]);
   context.lineTo(...base[1]);
   context.ellipse(cx, cy, a, b, 0, angle1, angle2);
+  context.closePath();
+  context.fill();
+  context.stroke();
+
+  // Draw base
+  context.fillStyle = clrs.base;
+  context.beginPath();
+  context.moveTo(...base[0]);
+  context.lineTo(...base[droopSide]);
+  context.lineTo(base[droopSide][0], base[droopSide][1] + b * 0.1);
+  context.lineTo(base[0][0], base[0][1] + b * 0.1);
   context.closePath();
   context.fill();
   context.stroke();

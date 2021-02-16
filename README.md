@@ -1,3 +1,5 @@
 # Poorly Drawn
 
-An image generation API to generate poorly drawn images
+An image service for poorly drawn generative images
+
+![pizza](/og-image.gif)
