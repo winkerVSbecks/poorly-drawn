@@ -22,11 +22,18 @@ const sketch = () => {
     context.fillStyle = clrs.bg;
     context.fillRect(0, 0, width, height);
 
+    const lineWidth = Math.max(2, height * 0.0125);
+
     context.strokeStyle = clrs.outline;
-    context.lineWidth = Math.max(2, height * 0.0125);
+    context.lineWidth = lineWidth;
     context.lineJoin = 'round';
     context.lineCap = 'round';
-    makePizza(context, [width / 2, height / 2], [width / 6, height / 6]);
+    makePizza(
+      context,
+      [width / 2, height / 2],
+      [width / 6, height / 6],
+      lineWidth
+    );
   };
 };
 
@@ -35,7 +42,7 @@ module.exports = {
   sketch,
 };
 
-function makePizza(context, [cx, cy], [a, b]) {
+function makePizza(context, [cx, cy], [a, b], lineWidth) {
   const angles = randomAngles();
   const crustAngleOff = Math.PI * 0.01;
 
@@ -92,7 +99,7 @@ function makePizza(context, [cx, cy], [a, b]) {
   );
 
   context.strokeStyle = clrs.crust;
-  context.lineWidth = Math.max(2, height * 0.0125) * 4;
+  context.lineWidth = lineWidth * 4;
   context.beginPath();
   context.moveTo(...crustFill[1]);
   context.ellipse(cx, cy, a * crustScale, b * crustScale, 0, angle1, angle2);
@@ -104,7 +111,7 @@ function makePizza(context, [cx, cy], [a, b]) {
   );
 
   context.strokeStyle = clrs.outline;
-  context.lineWidth = Math.max(2, height * 0.0125);
+  context.lineWidth = lineWidth;
   context.beginPath();
   context.moveTo(...crustOutline[1]);
   context.ellipse(cx, cy, a * crustScale, b * crustScale, 0, angle1, angle2);
