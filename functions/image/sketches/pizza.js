@@ -22,7 +22,7 @@ const sketch = () => {
     context.fillStyle = clrs.bg;
     context.fillRect(0, 0, width, height);
 
-    const lineWidth = Math.max(2, height * 0.0125);
+    const lineWidth = Math.min(8, Math.max(2, height * 0.0125));
 
     context.strokeStyle = clrs.outline;
     context.lineWidth = lineWidth;
