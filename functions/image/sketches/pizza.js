@@ -92,7 +92,7 @@ function makePizza(context, [cx, cy], [a, b]) {
   );
 
   context.strokeStyle = clrs.crust;
-  context.lineWidth = 32;
+  context.lineWidth = Math.max(2, height * 0.0125) * 4;
   context.beginPath();
   context.moveTo(...crustFill[1]);
   context.ellipse(cx, cy, a * crustScale, b * crustScale, 0, angle1, angle2);
@@ -104,7 +104,7 @@ function makePizza(context, [cx, cy], [a, b]) {
   );
 
   context.strokeStyle = clrs.outline;
-  context.lineWidth = 8;
+  context.lineWidth = Math.max(2, height * 0.0125);
   context.beginPath();
   context.moveTo(...crustOutline[1]);
   context.ellipse(cx, cy, a * crustScale, b * crustScale, 0, angle1, angle2);
