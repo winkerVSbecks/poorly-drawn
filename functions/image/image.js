@@ -3,14 +3,16 @@ const render = require('./render');
 
 const sketches = { pizza };
 
-exports.handler = async function (event, ctx, callback) {
+exports.handler = async function (event, context) {
   const { queryStringParameters } = event;
   const { type, size } = queryStringParameters;
   const sketchConfig = sketches[type] || pizza;
 
   const dimensions = size
     ? size.split('x').map((s) => parseInt(s, 10))
-    : [1600, 1200];
+    : [1280, 640];
+
+  console.log(size, dimensions);
 
   const settings = { ...sketchConfig.settings, dimensions };
 
@@ -28,9 +30,9 @@ exports.handler = async function (event, ctx, callback) {
     })
     .catch((error) => {
       console.log('error', error);
-      return callback(null, {
+      return {
         statusCode: 400,
         body: JSON.stringify(error),
-      });
+      };
     });
 };
