@@ -1,1 +1,2 @@
 /pizza size=:size  /.netlify/functions/image?type=pizza&size=:size 200
+/pizza  /.netlify/functions/image?type=pizza 200
